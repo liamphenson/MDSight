@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDSight</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="titlebar">
+    <span id="filename">untitled.md</span>
+    <span id="modified-dot" class="hidden">●</span>
+    <button id="new-window-btn" class="titlebar-btn" title="New Window (⌘⇧N)">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <rect x="1" y="3" width="9" height="8" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        <path d="M4 3V2a1 1 0 011-1h7a1 1 0 011 1v8a1 1 0 01-1 1h-1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="app">
+
+    <!-- ── Explorer sidebar ── -->
+    <div id="explorer-pane">
+      <div id="explorer-header" class="pane-header">
+        <span id="explorer-title">EXPLORER</span>
+        <div id="explorer-actions">
+          <button id="open-folder-btn" class="icon-btn" title="Open Folder (⌘⇧O)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M1.5 3.5A1 1 0 012.5 2.5h3.086a1 1 0 01.707.293L7.207 3.7A1 1 0 007.914 4H13.5a1 1 0 011 1v7a1 1 0 01-1 1h-11a1 1 0 01-1-1V3.5z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+              <line x1="8" y1="7" x2="8" y2="11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="6" y1="9" x2="10" y2="9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button id="collapse-all-btn" class="icon-btn" title="Collapse All">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M2 4h5v5H2zM9 7h5v5H9z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+              <path d="M4 4V2.5M4 2.5H12M12 2.5V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="explorer-body">
+        <!-- Populated by JS -->
+        <div id="explorer-empty">
+          <div class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="4" y="12" width="40" height="30" rx="2" stroke="#555" stroke-width="2" fill="none"/>
+              <path d="M4 18h40" stroke="#555" stroke-width="2"/>
+              <path d="M4 12v-2a2 2 0 012-2h10l4 4H4z" fill="#3c3c3c" stroke="#555" stroke-width="2"/>
+            </svg>
+          </div>
+          <p>No folder open</p>
+          <button id="empty-open-btn" class="open-folder-cta">Open Folder</button>
+        </div>
+        <div id="tree-root" class="hidden"></div>
+      </div>
+    </div>
+
+    <div id="explorer-divider" class="resize-handle"></div>
+
+    <!-- ── Editor ── -->
+    <div id="editor-pane">
+      <div id="editor-header" class="pane-header">EDITOR</div>
+      <div id="editor-container"></div>
+    </div>
+
+    <div id="divider" class="resize-handle"></div>
+
+    <!-- ── Preview ── -->
+    <div id="preview-pane">
+      <div id="preview-header" class="pane-header">PREVIEW</div>
+      <div id="preview-container">
+        <div id="preview-content"></div>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
