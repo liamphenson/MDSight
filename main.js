@@ -31,10 +31,14 @@ function createWindow() {
 
   win.loadFile(path.join(__dirname, 'dist', 'index.html'));
 
+  // Capture the id now — win.webContents is already destroyed by the
+  // time the 'closed' event fires, so reading it there would throw.
+  const webContentsId = win.webContents.id;
+
   // Stop any watcher belonging to this window when it closes
   win.on('closed', () => {
-    const watcher = watchers.get(win.webContents.id);
-    if (watcher) { watcher.close(); watchers.delete(win.webContents.id); }
+    const watcher = watchers.get(webContentsId);
+    if (watcher) { watcher.close(); watchers.delete(webContentsId); }
   });
 
   return win;
